@@ -1,30 +1,18 @@
-import React from 'react';
-import './App.css';
+import React, {useState} from "react";
+import "./App.css";
 import Navbar from "./Navbar";
 import Routes from "./Routes";
-import { BrowserRouter } from 'react-router-dom';
-import JoblyApi from "./JoblyApi";
-
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  // const request = async () => {
-  //   const res = await JoblyApi.request("jobs");
-  //   console.log(res);
-  // };
-  // request();
-  // const getCompany = async (handle) => {
-  //   const res = await JoblyApi.getCompany(handle);
-  //   console.log(res);
-  // };
-  // getCompany("ayala-buchanan");
-
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  //logout function we can pass down to Navbar
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar/>
-        <Routes/>
+        <Navbar isLoggedIn={isLoggedIn}/>
+        <Routes />
       </BrowserRouter>
-
     </div>
   );
 }

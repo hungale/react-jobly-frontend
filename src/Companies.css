@@ -1,13 +1,7 @@
-.App {
-  text-align: center;
-}
-
-li {
-  list-style: none;
-}
-
-body {
+.Companies {
   background-color: #EBF5EA;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
@@ -20,15 +14,10 @@ body {
   color: #4B524A;
 }
 
-.Jobs {
-  background-color: #EBF5EA;
-  display: flex;
-  justify-content: center;
+ul {
+  width: 60%;
 }
 
-label {
-  display: block;
-  padding: 10px
+.card a {
+  color:#2C7B85;
 }
-
-

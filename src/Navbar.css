@@ -1,5 +1,22 @@
+/* maybe look up media queries to adjust for different screen sizes */
+/* starting at ~ 650 media query */
+
 .Navbar-nav {
   display: flex;
-  justify-content: space-evenly;
-  background-color: #A9BCD4;
+  justify-content: flex-start;
+  background-color: #2c7b85;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.Navbar-nav a {
+  color: white;
+  margin-right: 20px;
+  margin-left:20px
+}
+
+.Navbar-right {
+  position: absolute;
+  right: 5%;
 }

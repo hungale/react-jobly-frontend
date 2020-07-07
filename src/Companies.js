@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyApi";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
+import { NavLink } from "react-router-dom";
+import "./Companies.css"
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
@@ -13,28 +15,27 @@ const Companies = () => {
     getCompanies();
   }, []);
 
-  
-
   const renderCompanies = () => {
     return (
       <ul>
-        {companies.map(company => {
+        {companies.map((company) => {
           return (
-          <li>
-            <h4>{company.name}</h4>
-            <p>{company.description}</p>
-          </li>
-          )
-        })
-        }
+            <div className="card">
+              <li>
+                <NavLink exact to={`/companies/${company.handle}`}>
+                  <h4>{company.name}</h4>
+                </NavLink>
+                <p>{company.description}</p>
+              </li>
+            </div>
+          );
+        })}
       </ul>
-    )
+    );
   };
   return (
-    <div>
-      <ul>
-        {renderCompanies()}
-      </ul>
+    <div className="Companies">
+      {renderCompanies()}
     </div>
   );
 };

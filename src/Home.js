@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Home = () => {
   return(
     <div>
-      Jobly
+      <h1>Jobly</h1>
+      <h4>All the jobs in one convenient place</h4>
+      <h2>Welcome Back!</h2>
     </div>
   );
 };
