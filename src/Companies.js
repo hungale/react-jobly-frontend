@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyApi";
+import { v4 as uuid } from 'uuid';
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
