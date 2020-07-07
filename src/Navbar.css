@@ -1,0 +1,5 @@
+.Navbar-nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #A9BCD4;
+}
