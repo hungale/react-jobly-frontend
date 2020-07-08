@@ -5,13 +5,22 @@ import Routes from "./Routes";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  //logout function we can pass down to Navbar
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function logout() {
+    localStorage.clear();
+    setIsLoggedIn(false);
+  }
+
+  function login() {
+    setIsLoggedIn(true);
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn}/>
-        <Routes />
+        <Navbar isLoggedIn={isLoggedIn} logout={logout} />
+        <Routes login={login} />
       </BrowserRouter>
     </div>
   );

@@ -8,9 +8,7 @@ import Jobs from "./Jobs";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
-
-
-const Routes = () => {
+const Routes = ({ login }) => {
   
   // const createRoutes = () => {
   //   return (
@@ -23,7 +21,7 @@ const Routes = () => {
     <div className="Routes">
       <Switch>
         <Route exact path="/login">
-          <Login />
+          <Login login={login} />
         </Route>
         <Route exact path="/companies/:company">
           <Company />
@@ -35,7 +33,7 @@ const Routes = () => {
           <Jobs />
         </Route>
         <Route exact path="/signup">
-          <Signup />
+          <Signup login={login} />
         </Route>
         <Route exact path="/profile">
           <Profile />

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "./JoblyApi";
 import { v4 as uuid } from "uuid";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./Companies.css"
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
-
+  // if (!localStorage.getItem("_token")) {
+  //    <Redirect exact to="/"/>
+  // }
   useEffect(() => {
     const getCompanies = async () => {
       const res = await JoblyApi.request("companies");

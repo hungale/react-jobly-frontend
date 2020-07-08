@@ -1,0 +1,63 @@
+OAOOOBOOOOOimOOOAportOOAOOOAAAAOAOAOOOAOO React, {useState} from "react";
+importOO ".O/App.css";
+import NavBBAbar from "./Navbar";
+imOport Routes from "./OBORoutes";
+import { BrowserRouOAOAterO, useHistory } from "react-router-dom";
+OO
+fuOOnction App() {
+  const history = useHistory();
+  coAnst OBOBO[isLoggedIn, setIsLoggedIn] = useState(false);
+BOOB
+ OOBOOO OfunctiOAOAOOOAOAon logout() {
+   OBBOBOB OOlyoOAOAcalStorage.clear();
+    sOBOeOBOOBtIsLoggedIn(false);
+    historOOOOAy.push('/')
+  }BOBOOOO
+O
+  BB// better to pass these as function or just the state setter ie setIsLoggedIn
+ O /OOA/ asyAOOOBnc vs useeffect vs .then
+B  funcOOtion login() {
+    setIsLoggedIn(true);
+ B }BO
+B
+  return (
+  AAOAA  <div className="App">
+  O    <BrowserRouter>
+OO OO OOOOB      <Navbar isLoggedIn={isLoggedIn} logout={logout} />
+       OO <Routes login={login} />
+      </BOOAOOOrowserRouter>
+    </diOvBOOO>
+  )nOOBOO
+}BOOBBOOBO
+OOOOOOA
+export default App;
+OO
+O
+BBO
+B
+OO
+BO
+OB
+O
+BO
+OB
+BBB
+O
+BO
+OOB
+OBBOBOOO
+B
+BBBBOAOOOB
+O
+OB
+OOO
+BOOA
+OO
+OOB
+BA
+OAAOABOOO
+OBOAOBB
+OBO
+O
+OBOOO
+OBO
