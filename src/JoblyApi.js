@@ -6,9 +6,11 @@ class JoblyApi {
     console.debug("API Call:", endpoint, params, verb);
 
     const _token = ( // for now, hardcode token for "testing"
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-        "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-        "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
+        // "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
+        // "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U"
+        localStorage.getItem("_token")
+    );
 
     const data = (verb === "get")
       ? { params: { _token, ...params } } // GET
@@ -36,3 +38,4 @@ class JoblyApi {
 }
 
 export default JoblyApi;
+export { BASE_URL };
