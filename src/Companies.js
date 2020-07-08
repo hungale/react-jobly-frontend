@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JoblyApi from "./JoblyApi";
 import { v4 as uuid } from "uuid";
-import { NavLink, Redirect } from "react-router-dom";
-import "./Companies.css"
+import { NavLink, useHistory } from "react-router-dom";
+import "./Companies.css";
+import UserContext from "./UserContext";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
-  // if (!localStorage.getItem("_token")) {
-  //    <Redirect exact to="/"/>
-  // }
+  const user = useContext(UserContext);
+  const history = useHistory();
+
   useEffect(() => {
     const getCompanies = async () => {
       const res = await JoblyApi.request("companies");
       setCompanies(res.companies);
     };
-    getCompanies();
+    if(!user) {
+      history.push("/");
+    } else {
+      console.log(user);
+      getCompanies();
+    }
   }, []);
 
   // search

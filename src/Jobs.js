@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import JoblyApi from "./JoblyApi";
+import UserContext from "./UserContext";
+import { useHistory } from "react-router-dom";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const user = useContext(UserContext);
+  const history = useHistory();
 
   useEffect(function () {
     async function getJobs() {
       const res = await JoblyApi.request("jobs");
       setJobs(res.jobs);
     }
-    getJobs();
+    user ? getJobs() : history.push("/");
   }, []);
 
   // search
@@ -23,14 +27,14 @@ function Jobs() {
     const res = await JoblyApi.request(`jobs?search=${searchQuery}`);
     setJobs(res.jobs);
   }
-  
+
   // make it its own component
   const renderSearchBar = () => {
     return (
       <form onSubmit={handleSearch} className="search">
-        <input id="search" 
-             onChange={handleChange} 
-             placeholder="Enter search term..."/>
+        <input id="search"
+          onChange={handleChange}
+          placeholder="Enter search term..." />
         <button className="searchBtn">Search</button>
       </form>
     );
@@ -44,7 +48,6 @@ function Jobs() {
           {jobs.length &&
             jobs.map((job) => (
               <div className="card">
-              <li>
                 <h4>
                   {job.title}
                 </h4>
@@ -53,8 +56,7 @@ function Jobs() {
                 <div className="apply">
                   <button className="applyBtn">Apply</button>
                 </div>
-              </li>
-            </div>
+              </div>
             ))}
         </ul>
       </div>

@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from "./UserContext";
 
 function Profile() {
   const [formData, setFormData] = useState({});
+  const user = useContext(UserContext);
+  const history = useHistory();
+  if(!user) {
+    history.push("/");
+  }
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
