@@ -15,6 +15,28 @@ const Companies = () => {
     getCompanies();
   }, []);
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleChange = (evt) => {
+    const { value } = evt.target;
+    setSearchQuery(value);
+  };
+  const handleSearch = async (evt) => {
+    evt.preventDefault();
+    const res = await JoblyApi.request(`companies?search=${searchQuery}`);
+    setCompanies(res.companies);
+  }
+  
+  const renderSearchBar = () => {
+    return (
+      <form onSubmit={handleSearch} className="search">
+        <input id="search" 
+             onChange={handleChange} 
+             placeholder="Enter search term..."/>
+        <button className="searchBtn">Search</button>
+      </form>
+    );
+  };
+
   const renderCompanies = () => {
     return (
       <ul>
@@ -34,8 +56,11 @@ const Companies = () => {
     );
   };
   return (
-    <div className="Companies">
-      {renderCompanies()}
+    <div>
+      {renderSearchBar()}
+      <div className="cardContainer">
+        {renderCompanies()}
+      </div>
     </div>
   );
 };

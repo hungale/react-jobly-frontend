@@ -1,23 +1,5 @@
-.Companies {
+.cardContainer {
   background-color: #EBF5EA;
   display: flex;
   justify-content: center;
-}
-
-.card {
-  background-color: white;
-  border: 3px solid #A8B8A7;
-  border-radius: 10px;
-  text-align: left;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  color: #4B524A;
-}
-
-ul {
-  width: 60%;
-}
-
-.card a {
-  color:#2C7B85;
 }

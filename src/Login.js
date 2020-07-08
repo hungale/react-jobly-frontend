@@ -18,6 +18,7 @@ const Login = () => {
         <input name="username" id="username" onChange={handleChange}></input>
         <label htmlFor="password">Password</label>
         <input name="password" id="password" onChange={handleChange}></input>
+        <button className="submitBtn">Login!</button>
       </form>
     </div>
   );

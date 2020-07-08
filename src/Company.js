@@ -18,12 +18,25 @@ function Company() {
     <div>
       <h3>{company.name}</h3>
       <p>{company.description}</p>
-      <ul>
-        {/* maybe add a spinner component instead */}
-        {company.jobs && company.jobs.map((job) => (
-          <li>{job.title}</li>
-        ))}
-      </ul>
+      <div className="cardContainer">
+        <ul>
+          {/* maybe add a spinner component instead */}
+          {company.jobs && company.jobs.map((job) => (
+            <div className="card">
+              <li>
+                <h4>
+                  {job.title}
+                </h4>
+                <li>Salary: ${job.salary}</li>
+                <li>Equity: {job.equity}%</li>
+                <div className="apply">
+                  <button className="applyBtn">Apply</button>
+                </div>
+              </li>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

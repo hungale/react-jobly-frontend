@@ -24,6 +24,7 @@ function Signup() {
         <input name="lastName" id="lastName" onChange={handleChange}></input>
         <label htmlFor="email">Email</label>
         <input name="email" id="email" onChange={handleChange}></input>
+        <button className="submitBtn">Sign up!</button>
       </form>
     </div>
   );

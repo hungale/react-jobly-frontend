@@ -26,6 +26,7 @@ function Profile() {
         <input name="photoUrl" id="photoUrl" onChange={handleChange}></input>
         <label htmlFor="password">Re-enter Password</label>
         <input name="password" id="password" onChange={handleChange}></input>
+        <button className="submitBtn">Edit!</button>
       </form>
     </div>
   );
