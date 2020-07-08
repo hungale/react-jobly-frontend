@@ -12,6 +12,7 @@ function Jobs() {
     getJobs();
   }, []);
 
+  // search
   const [searchQuery, setSearchQuery] = useState("");
   const handleChange = (evt) => {
     const { value } = evt.target;
@@ -23,6 +24,7 @@ function Jobs() {
     setJobs(res.jobs);
   }
   
+  // make it its own component
   const renderSearchBar = () => {
     return (
       <form onSubmit={handleSearch} className="search">

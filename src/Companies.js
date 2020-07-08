@@ -15,7 +15,9 @@ const Companies = () => {
     getCompanies();
   }, []);
 
+  // search
   const [searchQuery, setSearchQuery] = useState("");
+
   const handleChange = (evt) => {
     const { value } = evt.target;
     setSearchQuery(value);
@@ -26,6 +28,7 @@ const Companies = () => {
     setCompanies(res.companies);
   }
   
+  // make it its own component
   const renderSearchBar = () => {
     return (
       <form onSubmit={handleSearch} className="search">
