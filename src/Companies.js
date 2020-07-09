@@ -18,7 +18,6 @@ const Companies = () => {
     if(!user) {
       history.push("/");
     } else {
-      console.log(user);
       getCompanies();
     }
   }, []);
