@@ -19,7 +19,7 @@ function App() {
       const res = await axios.get(BASE_URL + `/users/${username}`, {params:{_token}});
       setUser(res.data.user);
     };
-    console.log("mount");
+    // console.log("mount");
     if(token) {
       try {
         const { username } = jwt.decode(token);

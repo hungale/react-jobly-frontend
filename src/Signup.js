@@ -18,17 +18,15 @@ function Signup({ login}) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log("form data:", formData);
     const register = async () => {
-      let res = await axios.post(BASE_URL + "/users", formData);
+      const res = await axios.post(BASE_URL + "/users", formData);
       return res;
     };
     try {
       const res = await register();
-      console.log(res);
       localStorage.setItem("_token", res.data.token);
       login();
-      history.push('/companies')
+      history.push('/companies');
     } catch (err) {
       if (typeof err.response.data.message === "string") {
         setErrors([err.response.data.message]);

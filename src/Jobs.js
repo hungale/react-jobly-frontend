@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import JoblyApi from "./JoblyApi";
 import UserContext from "./UserContext";
-import { useHistory, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { BASE_URL } from "./JoblyApi";
 import axios from "axios";
 
@@ -9,7 +9,6 @@ function Jobs() {
   const [jobs, setJobs] = useState([]);
   const { user, setUser } = useContext(UserContext);
   const [searchQuery, setSearchQuery] = useState("");
-  const history = useHistory();
 
   useEffect(function () {
     async function getJobs() {
@@ -52,7 +51,7 @@ function Jobs() {
     const data = {};
     data._token = localStorage.getItem("_token");
     await axios.post(BASE_URL + `/jobs/${id}/apply`, data);
-    let res = await axios.get(BASE_URL + `/users/${user.username}`, {
+    const res = await axios.get(BASE_URL + `/users/${user.username}`, {
       params: data,
     });
     setUser(res.data.user);
@@ -65,7 +64,7 @@ function Jobs() {
         <ul>
           {jobs.length &&
             jobs.map((job) => (
-              <div className="card">
+              <div className="card" key={job.id}>
                 <h4>{job.title}</h4>
                 <li>Salary: ${job.salary}</li>
                 <li>Equity: {job.equity}%</li>

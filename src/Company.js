@@ -22,7 +22,7 @@ function Company() {
     const data = {};
     data._token = localStorage.getItem("_token");
     await axios.post(BASE_URL + `/jobs/${id}/apply`, data);
-    let res = await axios.get(BASE_URL + `/users/${user.username}`, {
+    const res = await axios.get(BASE_URL + `/users/${user.username}`, {
       params: data,
     });
     setUser(res.data.user);
@@ -37,14 +37,13 @@ function Company() {
           {/* maybe add a spinner component instead */}
           {company.jobs &&
             company.jobs.map((job) => (
-              <div className="card">
-                <li>
-                  <h4>{job.title}</h4>
-                  <li>Salary: ${job.salary}</li>
-                  <li>Equity: {job.equity}%</li>
-                  <div className="apply">
-                    {user && user.jobs.filter((applied) => applied.id === job.id)
-                      .length > 0 ? (
+              <div className="card" key={job.id}>
+                <h4>{job.title}</h4>
+                <li>Salary: ${job.salary}</li>
+                <li>Equity: {job.equity}%</li>
+                <div className="apply">
+                  {user?.jobs?.filter((applied) => applied.id === job.id)
+                    .length > 0 ? (
                       <button className="appliedBtn" disabled>
                         Applied
                       </button>
@@ -56,8 +55,7 @@ function Company() {
                         Apply
                       </button>
                     )}
-                  </div>
-                </li>
+                </div>
               </div>
             ))}
         </ul>

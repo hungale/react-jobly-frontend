@@ -10,13 +10,6 @@ import Profile from "./Profile";
 
 const Routes = ({ login }) => {
   
-  // const createRoutes = () => {
-  //   return (
-
-  //   )
-  // };
-
-
   return (
     <div className="Routes">
       <Switch>

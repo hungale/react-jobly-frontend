@@ -5,9 +5,6 @@ import { useHistory } from "react-router-dom";
 
 const Login = ({ login }) => {
   const [formData, setFormData] = useState({});
-  // const [token, setToken] = useState("");
-  // const [submitting, setSubmitting] = useState(false);
-  // disabled={!submitting}
   const [error, setError] = useState("");
   const history = useHistory();
 
@@ -21,16 +18,13 @@ const Login = ({ login }) => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(formData);
     const getToken = async () => {
-      console.log(BASE_URL + "/login");
       const res = await axios.post(BASE_URL + "/login", formData);
       return res;
     };
     // setSubmitting(true);
     try {
       const res = await getToken();
-      console.log("res", res);
       localStorage.setItem("_token", res.data.token);
       login();
       history.push("/");
