@@ -22,7 +22,6 @@ const Login = ({ login }) => {
       const res = await axios.post(BASE_URL + "/login", formData);
       return res;
     };
-    // setSubmitting(true);
     try {
       const res = await getToken();
       localStorage.setItem("_token", res.data.token);
@@ -31,7 +30,6 @@ const Login = ({ login }) => {
     } catch (err) {
       setError("Invalid credentials");
     }
-    // setSubmitting(false);
   };
 
   return (
