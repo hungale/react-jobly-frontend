@@ -38,7 +38,8 @@ function App() {
   }
 
   
-  function login() {
+  function login(user) {
+    setUser(user);
     setIsLoggedIn(true);
   }
 

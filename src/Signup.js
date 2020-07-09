@@ -3,7 +3,8 @@ import axios from "axios";
 import { BASE_URL } from "./JoblyApi";
 import { useHistory } from 'react-router-dom';
 
-function Signup({ login}) {
+
+function Signup({ login }) {
   const history = useHistory();
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState([]);
@@ -26,7 +27,7 @@ function Signup({ login}) {
       const res = await register();
       localStorage.setItem("_token", res.data.token);
       login();
-      history.push('/companies');
+      history.push('/');
     } catch (err) {
       if (typeof err.response.data.message === "string") {
         setErrors([err.response.data.message]);
@@ -42,7 +43,7 @@ function Signup({ login}) {
         <label htmlFor="username">Username</label>
         <input name="username" id="username" onChange={handleChange}></input>
         <label htmlFor="password">Password</label>
-        <input name="password" id="password" onChange={handleChange}></input>
+        <input name="password" type="password" id="password" onChange={handleChange}></input>
         <label htmlFor="first_name">First Name</label>
         <input
           name="first_name"
