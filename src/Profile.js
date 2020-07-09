@@ -61,28 +61,28 @@ function Profile() {
         <input
           name="first_name"
           id="first_name"
-          value={formData.first_name}
+          value={formData.first_name || ""}
           onChange={handleChange}
         ></input>
         <label htmlFor="last_name">Last Name</label>
         <input
           name="last_name"
           id="last_name"
-          value={formData.last_name}
+          value={formData.last_name || ""}
           onChange={handleChange}
         ></input>
         <label htmlFor="email">Email</label>
         <input
           name="email"
           id="email"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
         ></input>
         <label htmlFor="photo_url">Photo URL</label>
         <input
           name="photo_url"
           id="photo_url"
-          value={formData.photo_url}
+          value={formData.photo_url || ""}
           onChange={handleChange}
         ></input>
         <label htmlFor="password">Re-enter Password</label>
