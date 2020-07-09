@@ -62,14 +62,13 @@ function Jobs() {
       {renderSearchBar()}
       <div className="cardContainer">
         <ul>
-          {jobs.length &&
-            jobs.map((job) => (
-              <div className="card" key={job.id}>
-                <h4>{job.title}</h4>
-                <li>Salary: ${job.salary}</li>
-                <li>Equity: {job.equity}%</li>
-                <div className="apply">
-                  {user?.jobs?.filter((applied) => applied.id === job.id).length >
+          {jobs?.map((job) => (
+            <div className="card" key={job.id}>
+              <h4>{job.title}</h4>
+              <li>Salary: ${job.salary}</li>
+              <li>Equity: {job.equity * 100}%</li>
+              <div className="apply">
+                {user?.jobs?.filter((applied) => applied.id === job.id).length >
                   0 ? (
                     <button
                       onClick={() => applyToJob(job.id)}
@@ -86,9 +85,9 @@ function Jobs() {
                       Apply
                     </button>
                   )}
-                </div>
               </div>
-            ))}
+            </div>
+          ))}
         </ul>
       </div>
     </div>

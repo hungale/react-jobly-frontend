@@ -40,7 +40,7 @@ function Company() {
               <div className="card" key={job.id}>
                 <h4>{job.title}</h4>
                 <li>Salary: ${job.salary}</li>
-                <li>Equity: {job.equity}%</li>
+                <li>Equity: {job.equity * 100}%</li>
                 <div className="apply">
                   {user?.jobs?.filter((applied) => applied.id === job.id)
                     .length > 0 ? (
