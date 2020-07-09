@@ -90,6 +90,45 @@ ul {
   margin-right: 10px;
 }
 
+.nextPageBtn {
+  background-color: rgb(183, 121, 202);
+  border-radius: 5px;
+  padding: 15px 20px;
+
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.previousPageBtn {
+  background-color: rgb(233, 197, 98);
+  border-radius: 5px;
+  padding: 15px 20px;
+
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.nextPageBtn:disabled {
+  background-color: rgb(203, 168, 214);
+  /* border-radius: 5px;
+  padding: 15px 20px;
+
+  margin-bottom: 10px;
+  margin-right: 10px; */
+  margin-left: 10px;
+}
+
+.previousPageBtn:disabled {
+  background-color: rgb(245, 220, 153);
+  /* border-radius: 5px;
+  padding: 15px 20px;
+
+  margin-bottom: 10px; */
+  /* margin-right: 10px; */
+  margin-left: 10px;
+}
+
 .appliedBtn {
   background-color: rgb(252, 196, 174);
   border-radius: 5px;
