@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "./UserContext";
 
 const Home = () => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return(
     <div>
       <h1>Jobly</h1>

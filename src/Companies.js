@@ -7,7 +7,7 @@ import UserContext from "./UserContext";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {

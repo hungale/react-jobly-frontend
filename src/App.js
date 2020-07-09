@@ -10,7 +10,7 @@ import UserContext from "./UserContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("_token"));
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(localStorage.getItem("_token")? {} : null);
   
   // get the user on mount
   useEffect(() => {
@@ -26,7 +26,6 @@ function App() {
         getUserInfo(username, token);
       } catch(err) {
         console.error("Username could not be decoded.", err);
-        setIsLoggedIn(false);
         logout();
       }
     }
@@ -38,21 +37,16 @@ function App() {
     setIsLoggedIn(false);
   }
 
-  // QUESTION: ask if there's a cleaner implementation of this
-  // QUESTION: useLocalStorage, useful for just checking local storage
-  // QUESTION: last one is in Companies.js
+  
   function login() {
     setIsLoggedIn(true);
-    // const token = localStorage.getItem("_token");
-    // const { username } = jwt.decode(token);
-    // getUserInfo(username, token)
   }
 
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar isLoggedIn={isLoggedIn} logout={logout} />
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{user, setUser}}>
           <Routes login={login} />
         </UserContext.Provider>
       </BrowserRouter>

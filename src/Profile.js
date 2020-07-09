@@ -1,22 +1,22 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory, Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
 import axios from "axios";
 import { BASE_URL } from "./JoblyApi";
 
 function Profile() {
-  const user = useContext(UserContext);
-  // const initialValues = {
-  //   first_name: user.first_name,
-  //   last_name: user.last_name,
-  //   email: user.email,
-  //   photo_url: user.photo_url,
-  // };
-  const [formData, setFormData] = useState(user);
+  const { user, setUser } = useContext(UserContext);
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
+  const [formData, setFormData] = useState({});
+
+  useEffect(function () {
+    const { username, jobs, ...initialFormData } = user;
+    setFormData(initialFormData);
+  }, [user]);
 
   if (!user) {
-    history.push("/");
+    return <Redirect to="/login" />;
   }
 
   const handleChange = (evt) => {
@@ -33,14 +33,21 @@ function Profile() {
     const updateUser = async (formData) => {
       try {
         const data = { ...formData, _token };
-        delete data.jobs
-        await axios.patch(BASE_URL + `/users/${user.username}`, data);
+        if (!data.photo_url) {
+          delete data.photo_url;
+        }
+        const res = await axios.patch(BASE_URL + `/users/${user.username}`, data);
+        setUser(res.data.user);
+        history.push("/companies");
       } catch (err) {
-        console.log(err.response.data);
+        if (typeof err.response.data.message === "string") {
+          setErrors([err.response.data.message]);
+        } else {
+          setErrors(err.response.data.message);
+        }
       }
     };
     updateUser(formData);
-    history.push("/companies");
   };
 
   return (
@@ -48,35 +55,34 @@ function Profile() {
       <p>
         <b>Username:</b>
       </p>
-      <p>{user && user.username}</p>
+      <p>{user.username}</p>
       <form onSubmit={handleSubmit}>
-        {/* why does && throw warning here below?? */}
         <label htmlFor="first_name">First Name</label>
         <input
           name="first_name"
           id="first_name"
-          value={formData && formData.first_name}
+          value={formData.first_name}
           onChange={handleChange}
         ></input>
         <label htmlFor="last_name">Last Name</label>
         <input
           name="last_name"
           id="last_name"
-          value={formData && formData.last_name}
+          value={formData.last_name}
           onChange={handleChange}
         ></input>
         <label htmlFor="email">Email</label>
         <input
           name="email"
           id="email"
-          value={formData && formData.email}
+          value={formData.email}
           onChange={handleChange}
         ></input>
         <label htmlFor="photo_url">Photo URL</label>
         <input
           name="photo_url"
           id="photo_url"
-          value={formData && formData.photo_url}
+          value={formData.photo_url}
           onChange={handleChange}
         ></input>
         <label htmlFor="password">Re-enter Password</label>
@@ -87,6 +93,9 @@ function Profile() {
           onChange={handleChange}
         ></input>
         <button className="submitBtn">Edit!</button>
+        {errors.map((err) => (
+          <div>{err}</div>
+        ))}
       </form>
     </div>
   );
