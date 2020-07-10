@@ -7,7 +7,6 @@ import axios from "axios";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
-  const [showingJobs, setShowingJobs] = useState([]);
   const { user, setUser } = useContext(UserContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [pageNumber, setPageNumbers] = useState(1);
@@ -18,7 +17,6 @@ function Jobs() {
       setJobs(res.jobs);
     }
     getJobs();
-    setShowingJobs(jobs.slice(0, 10));
   }, []);
 
   if (!user) {
