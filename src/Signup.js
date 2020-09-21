@@ -40,6 +40,7 @@ function Signup({ login }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <h5>Note: Use testuser/testuser login combo if you don't want to make an account!)</h5>
         <label htmlFor="username">Username</label>
         <input name="username" id="username" onChange={handleChange}></input>
         <label htmlFor="password">Password</label>
